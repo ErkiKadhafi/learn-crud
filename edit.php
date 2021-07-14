@@ -6,7 +6,9 @@
     // var_dump($mahasiswa);
 
     if(isset($_POST["submit"])){
-        if(edit($_POST, $id) > 0){
+        global $id;
+
+        if(edit($_POST, $_FILES, $id) > 0){
             echo
                 "<script>
                     alert('Data berhasil diedit');
@@ -39,7 +41,8 @@
 </head>
 <body>
     <h1>Form Edit Mahasiswa</h1>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="gambarLama" value="<?= $mahasiswa["gambar"] ;?>">
         <ul>
             <li>
                 <label for="nama">Nama: </label>
@@ -63,11 +66,12 @@
             </li>
             <li>
                 <label for="gambar">Gambar: </label>
-                <input type="text" name="gambar" id="gambar"
-                value="<?= $mahasiswa["gambar"] ;?>">
+                <img src="img/<?= $mahasiswa["gambar"] ;?>" width="70">
+                <br>
+                <input type="file" name="gambar" id="gambar">
             </li>
             <li>
-                <button type="submit" name="submit">Tambah</button>
+                <button type="submit" name="submit">Edit</button>
             </li>
         </ul>
     </form>

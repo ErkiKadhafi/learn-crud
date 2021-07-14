@@ -51,7 +51,7 @@
             <tr>
                 <td><?= $count ;?></td>
                 <td>
-                    <a href="edit.php?id=<?= $mhs["id"] ;?>">Edit</a>
+                    <a href="edit.php?id=<?= $mhs["id"] ;?>">Edit</a> |
                     <a href="hapus.php?id=<?= $mhs["id"] ;?>"
                        onclick="return confirm('Are u sure?');">Delete</a>
                 </td>

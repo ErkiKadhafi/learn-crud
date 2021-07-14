@@ -1,7 +1,8 @@
 <?php 
     require "functions.php";
     if(isset($_POST["submit"])){
-        if(add($_POST) > 0){
+        var_dump($_FILES); die;
+        if(add($_POST, $_FILES) > 0){
             echo
                 "<script>
                     alert('Data berhasil ditambahkan');
@@ -35,7 +36,7 @@
 </head>
 <body>
     <h1>Form Tambah Mahasiswa</h1>
-    <form action="" method="POST">
+    <form action="" method="POST" enctype="multipart/form-data">
         <ul>
             <li>
                 <label for="nama">Nama: </label>
@@ -55,7 +56,7 @@
             </li>
             <li>
                 <label for="gambar">Gambar: </label>
-                <input type="text" name="gambar" id="gambar">
+                <input type="file" name="gambar" id="gambar">
             </li>
             <li>
                 <button type="submit" name="submit">Tambah</button>
