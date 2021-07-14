@@ -1,13 +1,13 @@
 <?php 
     require "functions.php";
     if(isset($_POST["submit"])){
-        var_dump($_FILES); die;
         if(add($_POST, $_FILES) > 0){
             echo
                 "<script>
                     alert('Data berhasil ditambahkan');
                     window.location.href = 'index.php';
                 </script>";
+            exit;
         } else{
             echo
             "<script>

@@ -111,4 +111,38 @@
         return mysqli_affected_rows($conn);
     }
 
+    function register($data){
+        global $conn;
+
+        $username = $data["username"];
+        $password = $data["password"];
+        $password2 = $data["password2"];
+
+        // cek konfirmasi password
+        if($password !== $password2){
+            return false;
+        }
+
+        $result = mysqli_query($conn, "SELECT * FROM user WHERE username = '$username'");
+        
+        // cek username udah ada apa belom
+        if($row = mysqli_fetch_assoc($result)){
+            echo
+                "<script>
+                    alert('Username is already exist!');
+                </script>";
+            return false;      
+        }
+
+        // encrypt password 
+        $password = password_hash($password, PASSWORD_DEFAULT);
+        
+        //masukin ke table
+        mysqli_query($conn, "INSERT INTO user VALUES 
+                    ('', '$username', '$password')");
+
+        // var_dump($password); die; 
+        return mysqli_affected_rows($conn);
+    }
+
 ?>

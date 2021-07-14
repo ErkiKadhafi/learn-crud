@@ -14,6 +14,7 @@
                     alert('Data berhasil diedit');
                     window.location.href = 'index.php';
                 </script>";
+            exit;
         } else{
             echo
             "<script>
