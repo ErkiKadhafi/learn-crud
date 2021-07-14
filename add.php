@@ -1,4 +1,10 @@
 <?php 
+    //buat session
+    session_start();
+    if(!isset($_SESSION["login"])){
+        header("Location: login.php");
+    }
+    
     require "functions.php";
     if(isset($_POST["submit"])){
         if(add($_POST, $_FILES) > 0){

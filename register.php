@@ -1,9 +1,18 @@
 <?php 
+    //buat session
+    session_start();
+    if(isset($_SESSION["login"])){
+        if($_SESSION["login"] == true){
+            header("Location: index.php");
+        }
+    }
+
     require "functions.php";
 
     if(isset($_POST["register"])){
         if(register($_POST) > 0){
             header("Location: index.php");
+            $_SESSION["login"] = true;
         }else{
             $error = true;
         }

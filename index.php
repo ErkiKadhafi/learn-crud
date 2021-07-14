@@ -1,4 +1,10 @@
 <?php 
+    //buat session
+    session_start();
+    if(!isset($_SESSION["login"])){
+        header("Location: login.php");
+    }
+
     require "functions.php";
 
     if(isset($_POST["search"])){
@@ -25,6 +31,7 @@
     <title>Daftar Mahasiswa</title>
 </head>
 <body>
+    <h2><a href="logout.php">Logout</a></h2>
     <h1>Daftar Mahasiswa</h1>
 
     <h2><a href="add.php">Tambah mahasiswa!</a></h2>
